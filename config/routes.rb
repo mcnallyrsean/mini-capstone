@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root "products#home"
   get "all" => "products#all"
+  get "checkout" => "product#checkout"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

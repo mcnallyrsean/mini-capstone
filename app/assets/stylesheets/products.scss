@@ -1,3 +1,20 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
+body{
+  background-color: #c0392b;
+  font-family: 'Lato', sans-serif;
+}
+
+.places_to_look{
+  width: 1200px;
+  height: 1200px;
+}
+
+.jumbotron{
+  h1{
+  font-size: 75px;}
+}
