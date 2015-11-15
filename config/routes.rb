@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  root "products#home"
-  get "all" => "products#all"
-  get "checkout" => "product#checkout"
+  get '/' => 'products#home'
+  get '/products' => 'products#index'
+  #get '/checkout' => 'products#checkout'
+  # Put new before show. Order matters in SHOW 
+  get '/products/new' => 'products#new'
+  post '/products' => 'products#create'
+  get '/products/:id' => 'products#show'
+ 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
