@@ -1,7 +1,7 @@
 <div class = "jumbotron">
   <h1 class = "create">Edit a product:</h1>
 
-  <%= form_tag "/products/#{@product.id}", method: :post do %>
+  <%= form_tag "/products/#{@product.id}", method: :patch do %>
     <div class = "form-group">
       <%= label_tag :name %>
       <%= text_field_tag :name, @product.name, class: "form-control", placeholder: "Enter name here! " %>
