@@ -41,6 +41,12 @@ class ProductsController < ApplicationController
     redirect_to "/products/#{@product.id}"
   end
 
+  def destroy
+    @product = Product.find_by(id: params[:id])
+    @product.destroy!
+    redirect_to '/products'
+  end
+
   def checkout
   end
 end
