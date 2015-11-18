@@ -20,7 +20,8 @@ class ProductsController < ApplicationController
       name: params[:name],
       price: params[:price],
       description: params[:description],
-      deliciousness: params[:deliciousness]
+      deliciousness: params[:deliciousness],
+      image: params[:image]
       )
     flash[:success] = "Product created. Way to go guy!"
     redirect_to '/products'
@@ -37,7 +38,8 @@ class ProductsController < ApplicationController
       name: params[:name],
       price: params[:price],
       description: params[:description],
-      deliciousness: params[:deliciousness]
+      deliciousness: params[:deliciousness],
+      image: params[:image]
       )
     flash[:info] = "Product updated. Way to go friend!"
     redirect_to "/products/#{product.id}"

@@ -1,20 +1,17 @@
-
-<div class = "jumbotron"> 
-  <div class = "page-header">
-    <h1>Here's all my stuff:</h1>
-  </div>
+<div class = "jumbotron">
+  <div class = "row">
     <% @products.each do |product| %>
-    <div class = "panel panel-default">
-      <div class = "panel-heading">
-        <h2 class = "panel-title"><%= product.name %></h2>
+      <div class = "col-md-4">
+        <div class = "well">
+          <h2><%= link_to product.name,"/products/#{product.id}"%></h2>
+          <p>Price: <%= product.price %></p>
+          <p>Description: <%= product.description %></p>
+          <p>Deliciousness: <%= product.deliciousness %></p>
+          <%= image_tag(product.image) %>
+          <p><button type="button" class="btn btn-primary">BUY NOW!</button> <button type="button" class="btn btn-success">ADD TO WISH LIST!</button></p> 
+        </div>
       </div>
-      <div class = "panel-body">
-        <h2>Price: <%= product.price %></h2>
-        <p>Description: <%= product.description %></p>
-        <p>Deliciousness: <%= product.deliciousness %></p>
-        <p><button type="button" class="btn btn-primary">BUY NOW!</button> <button type="button" class="btn btn-success">ADD TO WISH LIST!</button></p>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
