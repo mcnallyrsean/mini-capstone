@@ -9,6 +9,16 @@ body{
   font-family: 'Lato', sans-serif;
 }
 
+.carousel{
+  width: 640px;
+  padding: 10px;
+  margin-left: 175px;
+}
+.carousel-inner > .item > img{
+       width:640px;
+       height:360px;
+     }
+
 .places_to_look{
   width: 1200px;
   height: 1200px;
