@@ -22,6 +22,7 @@ class ProductsController < ApplicationController
       description: params[:description],
       deliciousness: params[:deliciousness]
       )
+    flash[:success] = "Product created. Way to go guy!"
     redirect_to '/products'
   end
 
@@ -38,12 +39,14 @@ class ProductsController < ApplicationController
       description: params[:description],
       deliciousness: params[:deliciousness]
       )
+    flash[:info] = "Product updated. Way to go friend!"
     redirect_to "/products/#{product.id}"
   end
 
   def destroy
     product = Product.find_by(id: params[:id])
     product.destroy!
+    flash[:danger] = "Product eliminated. Way to go buddy!"
     redirect_to '/products'
   end
 
