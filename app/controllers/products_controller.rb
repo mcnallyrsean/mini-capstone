@@ -21,6 +21,8 @@ class ProductsController < ApplicationController
       price: params[:price],
       description: params[:description],
       deliciousness: params[:deliciousness],
+      stocked: params[:stocked],
+      quantity: params[:quantity],
       image: params[:image]
       )
     flash[:success] = "Product created. Way to go guy!"
@@ -39,6 +41,8 @@ class ProductsController < ApplicationController
       price: params[:price],
       description: params[:description],
       deliciousness: params[:deliciousness],
+      stocked: params[:stocked],
+      quantity: params[:quantity],
       image: params[:image]
       )
     flash[:info] = "Product updated. Way to go friend!"

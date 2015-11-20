@@ -19,6 +19,10 @@
       <%= text_field_tag :deliciousness, @product.deliciousness, class: "form-control", placeholder: "Enter deliciousness here!" %>
     </div>
     <div class = "form-group">
+      <%= label_tag :quantity %>
+      <%= text_field_tag :quantity, @product.quantity, class: "form-control", placeholder: "How many are in stock?" %>
+    </div>
+    <div class = "form-group">
       <%= label_tag :image %>
       <%= text_field_tag :image, @product.image, class: "form-control", placeholder: "Add image here!" %>
     </div>
