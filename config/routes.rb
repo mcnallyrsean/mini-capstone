@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get '/' => 'products#home'
   get '/products' => 'products#index'
   #get '/checkout' => 'products#checkout'
