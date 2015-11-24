@@ -7,7 +7,7 @@
           <p>Price: <%= product.price.to_f %></p>
           <p>Description: <%= product.description %></p>
           <p>Deliciousness: <%= product.deliciousness %></p>
-          <%= image_tag(product.image, class: "img-responsive") %>
+          <%= image_tag(product.images[0].url, class: "img-responsive") %>
           <p><button type="button" class="btn btn-primary">BUY NOW!</button> <button type="button" class="btn btn-success">ADD TO WISH LIST!</button></p> 
         </div>
       </div>

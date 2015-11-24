@@ -1,6 +1,6 @@
 <div class ="jumbotron">
   <div class="row">
-    <div class = "col-md-6">
+    <div class = "col-md-12">
       <h1><%= @product.name %></h1>
       <p>Price: <%= @product.price.to_f %></p>
       <p>Tax: <%= @product.tax %></p>
@@ -9,12 +9,17 @@
       <p>Quantity in stock: <%= @product.quantity %></p>
       <p>Description: <%= @product.description %></p>
       <p>Deliciousness: <%= @product.deliciousness %></p>
+      <p>Supplier: <%= @product.supplier.name %></p>
       <%= link_to "Edit this product", "/products/#{@product.id}/edit", class: "btn btn-default" %>
       <%= link_to "Delete this product", "/products/#{@product.id}", class: "btn btn-danger", method: :delete %>
       <%= link_to "Back to all products", "/products", class: "btn btn-info" %>
     </div>
-    <div class= .col-md-6">
-      <%= image_tag(@product.image, class: "img-responsive", width: "500") %>
+  </div>
+  <div class = "row">
+    <div class= ".col-md-4">
+      <% @product.images.each do |image_object| %>
+        <%= image_tag(image_object.url, class: "img-responsive")  %>
+      <% end %>
     </div>
   </div>
 </div>
