@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
       subtotal: Order.last.subtotal,
       total: Order.last.grand_total
       )
-    flash[:success] = "Added to cart. Way to go guy!"
+    # flash[:success] = "Added to cart. Way to go guy!"
     @order_quantity = Order.last.quantity
     @order_id = Order.last.id
     # @order_price = Order.last.item_price
