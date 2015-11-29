@@ -17,6 +17,11 @@ class ProductsController < ApplicationController
     if discount_attribute && discount_sort_price
       @products = Product.where("price < ?", 2)
     end
+
+    if params[:category]
+      @products = Category.find_by(name: params[:category]).products
+    end
+    render :index
   end
 
   def show
