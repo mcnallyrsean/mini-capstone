@@ -6,6 +6,12 @@
         <p>Price: <%= @product.price.to_f %></p>
         <p>Tax: <%= @product.tax %></p>
         <p>Grand total: <%= @product.grand_total %></p>
+        <p>Category: <%= @product.printable_categories %></p>
+          <!-- <ul>
+            <% @product.categories.each do |category| %>
+              <li><%= category.name %></li>
+            <% end %>
+          </ul> -->
         <p>Status: <%= @product.sale_message %></p>
         <p>Quantity in stock: <%= @product.quantity %></p>
         <p>Description: <%= @product.description %></p>

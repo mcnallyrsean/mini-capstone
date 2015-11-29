@@ -27,4 +27,12 @@ class Product < ActiveRecord::Base
   def grand_total
    price + @tax 
   end
+
+  def printable_categories
+    names = []
+    categories.each do |category|
+      names << category.name
+    end
+    names.join(", ")
+  end
 end
