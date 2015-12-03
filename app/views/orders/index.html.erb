@@ -1,8 +1,7 @@
 <div class = "jumbotron">
-  <h1>You've added something to your cart.</h1>
-  <p>Quantity: <%= @order_quantity %></p>
-  <p>Order ID: <%= @order_id %></p>
-  <p>Subtotal: <%= @order_subtotal %></p>
-  <p>Sales Tax: <%= @order_sales_tax %></p>
-  <h2>Grand Total <%= @order_grand_total %></h2>
+  <h1>Sup orders page?</h1>
+  <p>UserID: <%= current_user.id %></p>
+  <p>Subtotal: <%= @order.subtotal %></p>
+  <p>Tax: <%= @order.tax %></p>
+  <p>Total: <%= @order.total %></p>
 </div>

@@ -1,8 +1,18 @@
 <div class = "jumbotron">
   <h1>Carted Products:</h1>
+  <!-- <div class="panel panel-default"> -->
   <% @carted_products.each do |carted_product| %>
-    <p>Product Name: <%= carted_product.product.name %></p>
-    <p>Quantity: <%= carted_product.quantity %></p>
-    <br>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= carted_product.product.name %></h3>
+        </div>
+      <div class="panel-body">
+        <p>Quantity: <%= carted_product.quantity %></p>
+      </div>
+    </div>
+  <% end %>
+  <%= form_tag '/orders', method: :post do %>
+    <%= hidden_field_tag user_id: current_user.id %>
+    <%= button_tag 'Buy now!', class: "btn btn-success" %>
   <% end %>
 </div>

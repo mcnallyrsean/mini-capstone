@@ -4,22 +4,28 @@ class OrdersController < ApplicationController
   end
 
   def create
-    order = Order.create(
-      quantity: params[:quantity],
-      product_id: params[:product_id],
+    id = current_user.id
+    @carted_products = CartedProduct.where("user_id LIKE ? AND status = ?", current_user.id, "carted")
+
+
+    @subtotal = 0
+    @tax = 0
+    @carted_products.each do |carted_product|
+      product_id = carted_product.product.id
+      price = carted_product.product.price
+      quantity = carted_product.quantity
+      @subtotal += price * quantity
+      @tax += price * quantity * 0.09
+    end
+
+    @total = @subtotal + @tax
+
+    @order = Order.create(
+      subtotal: @subtotal,
+      tax: @tax,
+      total: @total,
       user_id: current_user.id,
-      # item_price: Order.last.item_price,
-      tax: Order.last.sales_tax,
-      subtotal: Order.last.subtotal,
-      total: Order.last.grand_total
       )
-    # flash[:success] = "Added to cart. Way to go guy!"
-    @order_quantity = Order.last.quantity
-    @order_id = Order.last.id
-    # @order_price = Order.last.item_price
-    @order_sales_tax = Order.last.sales_tax
-    @order_subtotal = Order.last.subtotal
-    @order_grand_total = Order.last.grand_total
     render :index
   end
 
