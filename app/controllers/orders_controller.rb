@@ -4,32 +4,15 @@ class OrdersController < ApplicationController
   end
 
   def create
-    id = current_user.id
-    @carted_products = CartedProduct.where("user_id LIKE ? AND status = ?", current_user.id, "carted")
-
-
-    @subtotal = 0
-    @tax = 0
-    @carted_products.each do |carted_product|
-      product_id = carted_product.product.id
-      price = carted_product.product.price
-      quantity = carted_product.quantity
-      @subtotal += price * quantity
-      @tax += price * quantity * 0.09
-    end
-
-    @total = @subtotal + @tax
-
-    @order = Order.create(
-      subtotal: @subtotal,
-      tax: @tax,
-      total: @total,
-      user_id: current_user.id,
-      )
-    render :index
+    @carted_products = current_user.carted_products.where(status: "carted")
+    order = Order.create(user_id: current_user.id)
+    @carted_products.update_all(status: "purchased", order_id: order.id)
+    order.calculate_totals
+    redirect_to "/orders/#{order.id}"
   end
 
   def show
+    @order = Order.find_by(id: params[:id])
   end
 
 end

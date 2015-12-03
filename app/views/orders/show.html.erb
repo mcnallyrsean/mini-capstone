@@ -1,25 +1,15 @@
-<div class = "jumbotron">
-  <div class="row">
-      <div class = "col-md-12">
-        <h1><%= @product.name %></h1>
-        <p>Price: <%= @product.price.to_f %></p>
-        <p>Tax: <%= @product.tax %></p>
-        <p>Grand total: <%= @product.grand_total %></p>
-        <p>Status: <%= @product.sale_message %></p>
-        <p>Quantity in stock: <%= @product.quantity %></p>
-        <p>Description: <%= @product.description %></p>
-        <p>Deliciousness: <%= @product.deliciousness %></p>
-        <p>Supplier: <%= @product.supplier.name %></p>
-        <%= link_to "Edit this product", "/products/#{@product.id}/edit", class: "btn btn-default" %>
-        <%= link_to "Delete this product", "/products/#{@product.id}", class: "btn btn-danger", method: :delete %>
-        <%= link_to "Back to all products", "/products", class: "btn btn-info" %>
-      </div>
-    </div>
-    <div class = "row">
-      <div class= ".col-md-4">
-        <% @product.images.each do |image_object| %>
-          <%= image_tag(image_object.url, class: "img-responsive")  %>
-        <% end %>
-      </div>
-    </div>
+<div class="jumbotron">
+  <h2>Your order information:</h2>
+  <h3>Order id: <%= @order.id + 23423 %></h3>
+
+  <% @order.carted_products.each do |carted_product| %>
+    <h5>Name: <%= carted_product.product.name %></h5>
+    <h6>Quantity: <%= carted_product.quantity %></h6>
+  <% end %>
+
+
+  <h3>Subtotal: <%= number_to_currency(@order.subtotal) %></h3>
+  <h3>Tax: <%= number_to_currency(@order.tax) %></h3>
+  <hr>
+  <h3>Total: <%= number_to_currency(@order.total) %></h3>
 </div>

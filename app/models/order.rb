@@ -3,28 +3,16 @@ class Order < ActiveRecord::Base
   has_many :carted_products 
   has_many :products, through: :carted_products 
 
-  # def item_price
-  #   product.price
-  # end
+  SALES_TAX = 0.09
 
-  # def sales_tax
-  #   (item_price * 0.09) * quantity
-  # end
-
-  # def subtotal
-  #   quantity * item_price
-  # end
-
-  # def grand_total
-  #   subtotal + sales_tax
-  # end
-
-  # def email_cart
-  #   supplier.email
-  # end
-
-  # def name_cart
-  #   product.name
-  # end
+  def calculate_totals
+    subtotal = 0
+    carted_products.each do |carted_product|
+      subtotal += carted_product.subtotal
+    end
+    tax = subtotal * SALES_TAX
+    total = subtotal + tax
+    update(subtotal: subtotal, tax: tax, total: total)
+  end
 
 end

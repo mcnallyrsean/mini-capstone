@@ -12,13 +12,14 @@ Rails.application.routes.draw do
   delete '/products/:id' => 'products#destroy'
  
   #begin orders routes
-  get '/orders' => 'orders#index'
   post '/orders' => 'orders#create'
-  # get '/orders/:id' => 'orders#show'
+  get '/orders/:id' => 'orders#show'
+  
 
   #begin carted_products routes
   post '/carted_products' => 'carted_products#create'
   get '/carted_products' => 'carted_products#index'
+  delete 'carted_products/:id' => 'carted_products#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

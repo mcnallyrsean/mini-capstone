@@ -8,6 +8,7 @@
         </div>
       <div class="panel-body">
         <p>Quantity: <%= carted_product.quantity %></p>
+        <%= link_to "Remove item from cart", "/carted_products/#{carted_product.id}", method: :delete %>
       </div>
     </div>
   <% end %>
