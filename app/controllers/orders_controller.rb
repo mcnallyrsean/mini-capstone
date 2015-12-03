@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
     @subtotal = 0
     @tax = 0
     @carted_products.each do |carted_product|
+      carted_product.status = "purchased"
       product_id = carted_product.product.id
       price = carted_product.product.price
       quantity = carted_product.quantity

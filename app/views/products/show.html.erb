@@ -34,7 +34,7 @@
       <%= text_field_tag :quantity, nil, class: "form-control", placeholder: "Add quantity here!" %>
     </div>
     <div class = "form_group">
-      <%= text_field_tag :product_id, nil, class: "form-control", placeholder: "Add product ID here! (Hint: look at the # in the URL.)" %>
+      <%= hidden_field_tag :product_id, @product.id %>
     </div>
     <div>
       <%= button_tag 'Add to cart!', class: "btn btn-success" %>
