@@ -37,54 +37,53 @@ class ProductsController < ApplicationController
   end
 
   def new
-    unless current_user && current_user.admin
-      redirect_to "/"
-    end
+    @product = Product.new
   end
 
   def create
     if current_user && current_user.admin
-      product = Product.create(
+      @product = Product.new(
         name: params[:name],
         price: params[:price],
         description: params[:description],
         deliciousness: params[:deliciousness],
         stocked: params[:stocked],
-        quantity: params[:quantity],
-        image: params[:image]
+        quantity: params[:quantity]
         )
-      flash[:success] = "Product created. Way to go guy!"
-      redirect_to '/products'
+      if @product.save
+        flash[:success] = "Product created. Way to go guy!"
+        redirect_to '/products'
+      else
+        render :new
+      end
     else
       redirect_to "/"
     end
   end
 
   def edit
-    if current_user && current_user.admin
-      product_id = params[:id]
-      @product = Product.find_by(id: params[:id])
-    else
-      redirect_to "/"
-    end
+    @product = Product.find_by(id: params[:id])
+    render :edit
   end
 
   def update
     if current_user && current_user.admin
-      product = Product.find_by(id: params[:id])
-      product.update(
+      @product = Product.find_by(id: params[:id])
+      if @product.update(
         name: params[:name],
         price: params[:price],
         description: params[:description],
         deliciousness: params[:deliciousness],
         stocked: params[:stocked],
-        quantity: params[:quantity],
-        image: params[:image]
+        quantity: params[:quantity]
         )
-      flash[:info] = "Product updated. Way to go friend!"
-      redirect_to "/products/#{product.id}"
+        flash[:info] = "Product updated. Way to go friend!"
+        redirect_to "/products/#{@product.id}"
+      else
+        render :edit
+      end
     else
-      redirect_to "/"
+      render "/product/#{@product.id}/edit"
     end
   end
 
