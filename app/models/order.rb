@@ -3,7 +3,6 @@ class Order < ActiveRecord::Base
   has_many :carted_products 
   has_many :products, through: :carted_products 
 
-  validates :carted_products, presence: true
 
   SALES_TAX = 0.09
 
